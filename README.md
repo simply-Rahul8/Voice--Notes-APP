@@ -13,18 +13,9 @@ cd voice-notes
 npm install
 ```
 
-### 2. Add your API key
-
-Rename `.env.example` to `.env` (or edit the existing `.env`) and paste your key:
-
-```
-DEEPGRAM_API_KEY=your_actual_key_here
-PORT=3000
-```
-
 > `.env` is listed in `.gitignore` — it will never be committed.
 
-### 3. Start the server
+### 2. Start the server
 
 ```bash
 npm start
