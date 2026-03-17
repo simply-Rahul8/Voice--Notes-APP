@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voice Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="app">
+
+    <div class="header">
+      <div>
+        <div class="title">Voice Notes</div>
+        <div class="subtitle">Powered by Deepgram</div>
+      </div>
+      <div class="balance-box">
+        <div class="balance-label">Balance</div>
+        <div class="balance-val" id="balance">—</div>
+      </div>
+    </div>
+
+    <div class="key-status-bar" id="keyStatusBar">
+      <div class="key-dot" id="keyDot"></div>
+      <span id="keyStatusText">Checking server…</span>
+      <button class="btn-refresh" onclick="checkStatus()">↺ Refresh</button>
+    </div>
+
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="modeRT" onclick="setMode('realtime')">Live transcription</button>
+      <button class="mode-btn" id="modePost" onclick="setMode('post')">After recording</button>
+    </div>
+
+    <div class="recorder">
+      <div class="rec-controls">
+        <button class="rec-btn" id="recBtn" onclick="toggleRecord()">
+          <div class="rec-dot" id="recDot"></div>
+        </button>
+        <div class="rec-meta">
+          <div class="rec-status" id="recStatus">Ready</div>
+          <div class="rec-timer" id="recTimer">00:00</div>
+        </div>
+        <div class="waveform" id="waveform"></div>
+      </div>
+      <div class="transcript-area">
+        <div class="transcript-header">
+          <span class="transcript-label">Transcript</span>
+          <button class="btn-icon" onclick="copyTranscript()">Copy</button>
+        </div>
+        <div class="transcript-body">
+          <div class="transcript-text" id="transcript">
+            <span class="placeholder">Press record to begin…</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-section">
+      <div class="notes-header">
+        <span class="notes-label">Notes</span>
+        <button class="btn-danger" onclick="clearNotes()">Clear</button>
+      </div>
+      <textarea class="notes-ta" id="notes" placeholder="Append transcripts here and edit freely."></textarea>
+      <div class="action-row">
+        <button class="btn-primary" onclick="appendToNotes()">Append transcript →</button>
+        <button class="btn-secondary" onclick="downloadNotes()">Download .txt</button>
+      </div>
+    </div>
+
+    <div class="status-bar" id="statusBar"></div>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
